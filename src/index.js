@@ -79,13 +79,6 @@ class Service {
 
   create (data, params) {
     data = _.cloneDeep(_.isArray(data) ? data : [data]);
-    data = data.map(item => {
-      const time = new Date().getTime().toString(16);
-      const random = crypto.randomBytes(8).toString('hex');
-      return _.assign({
-        [this.id]: time + random
-      }, item);
-    });
 
     return this.Model.bulkDocs(data)
       .then(responses => _.map(responses, (response, index) => {
