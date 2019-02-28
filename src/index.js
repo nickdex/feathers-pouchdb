@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import Proto from 'uberproto';
 import crypto from 'crypto';
-import errors from 'feathers-errors';
+import errors from '@feathersjs/errors';
 import makeDebug from 'debug';
-import { select } from 'feathers-commons';
+import { select } from '@feathersjs/commons';
 
 import { computeLimit, convertQuery, extractMetadata } from './utilities';
 
@@ -79,6 +79,16 @@ class Service {
 
   create (data, params) {
     data = _.cloneDeep(_.isArray(data) ? data : [data]);
+    
+    if (_.isNil(data[this.id])) {
+      data = data.map(item => {
+        const time = new Date().getTime().toString(16);
+        const random = crypto.randomBytes(8).toString('hex');
+        return _.assign({
+          [this.id]: time + random
+        }, item);
+      });
+    }
 
     return this.Model.bulkDocs(data)
       .then(responses => _.map(responses, (response, index) => {
