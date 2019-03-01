@@ -1,12 +1,12 @@
 import _ from 'lodash';
 
-export function computeLimit (limit, paginate) {
+export function computeLimit(limit, paginate) {
   const lower = !_.isUndefined(limit) ? parseInt(limit) : paginate.default;
   const upper = _.isNumber(paginate.max) ? paginate.max : Number.MAX_VALUE;
   return Math.min(lower, upper);
 }
 
-export function convertQuery (feathersQuery) {
+export function convertQuery(feathersQuery) {
   const mangoQuery = {
     selector: {}
   };
@@ -40,7 +40,7 @@ export function convertQuery (feathersQuery) {
   return mangoQuery;
 }
 
-export function convertSort (feathersSort) {
+export function convertSort(feathersSort) {
   const mangoSort = [];
   for (let sortField in feathersSort) {
     if (feathersSort[sortField] < 0) {
@@ -55,7 +55,7 @@ export function convertSort (feathersSort) {
   return mangoSort;
 }
 
-export function extractMetadata (pouchdbResponse) {
+export function extractMetadata(pouchdbResponse) {
   const metadata = _.pick(pouchdbResponse, ['id', 'rev']);
   return _.mapKeys(metadata, (value, key) => `_${key}`);
 }
