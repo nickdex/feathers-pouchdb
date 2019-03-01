@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@feathersjs/adapter-commons@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@feathersjs/adapter-commons/-/adapter-commons-2.0.0.tgz#59f174df0ba92087c43c79a28690d275c4064d86"
+  integrity sha512-Fyb2RpV3pZWscjeSQnuvSfksixipwsY0ObpHbz8k0bdfbjpqT59MWTzVcvYsIJzCCHfD0KcsloiZ6jhW5wL9sg==
+  dependencies:
+    "@feathersjs/commons" "^4.0.0"
+    "@feathersjs/errors" "^3.3.6"
+
 "@feathersjs/commons@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-4.0.0.tgz#ae49bae4025c35aaeb9aacb6a0c27a3d1def5062"

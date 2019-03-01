@@ -3,7 +3,7 @@ import Proto from 'uberproto';
 import crypto from 'crypto';
 import errors from '@feathersjs/errors';
 import makeDebug from 'debug';
-import { select } from '@feathersjs/commons';
+import { select } from '@feathersjs/adapter-commons';
 
 import { computeLimit, convertQuery, extractMetadata } from './utilities';
 
